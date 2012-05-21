@@ -1,8 +1,142 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="Some of the parts of Javascript, organized for YEGRB" />
+    <meta name="author" content="Daniel Huckstep" />
+
     <title>Javascript, The Bad Parts</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Imprima' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet/less" href="/style.less" />
+    <script type="text/javascript" src="/less.js"></script>
 </head>
 <body>
-    Really bad!
+    <div id="impress">
+        <div id="title" class="step slide" data-scale="10" data-z="1000">
+            <h1>Javascript, The Bad Parts</h1>
+            <h2>By Daniel Huckstep</h2>
+            <h3><a href="http://verboselogging.com/" target="_blank">verboselogging.com</a></h3>
+            <h3><a href="http://twitter.com/darkhelmetlive" target="_blank">@darkhelmetlive</a></h3>
+        </div>
+
+        <div id="intro" class="step slide" data-x="3000" data-y="500">
+            <h1>All sorts of bad things happen when you use the bad parts</h1>
+            <h2>Like bugs. <span class="delay-fade-in">And nobody likes bugs.</span></h2>
+        </div>
+
+        <div id="globals" class="step slide" data-x="3000" data-y="2000" data-rotate="-90">
+            <h1>Global Variables</h1>
+            <h2>You're being trolled by the environment</h2>
+            <ul>
+                <li>Variables are global unless otherwise defined.</li>
+                <li class="delay-fade-in">Since when is that a good idea?</li>
+            </ul>
+        </div>
+
+        <div id="block-syntax" class="step slide" data-x="1500" data-y="2000" data-rotate="-180">
+            <h1>Block Syntax, with no Block Scope</h1>
+            <p>Every other language you'd want to use has block scope.</p>
+            <p class="delay-fade-in">But not Javascript.</p>
+        </div>
+
+        <div id="asi" class="step slide" data-y="500" data-x="1500" data-rotate="-270">
+            <h1>Automatic Semicolon Insertion</h1>
+            <h2>You're being trolled by the interpreter</h2>
+            <ul>
+                <li>Some minifiers don't play nice with it.</li>
+                <li class="delay-fade-in">Can result in more (subtle) bugs..</li>
+            </ul>
+        </div>
+
+        <div id="16-bit" class="step slide" data-y="-1000" data-x="1500" data-rotate="-360">
+            <h1>Characters are 16-bits</h1>
+            <h2>You're being trolled by the locale</h2>
+            <p>Need more than 16-bits for a character? <span class="delay-fade-in">Cool story bro.</span></p>
+        </div>
+
+        <div id="parseInt" class="step slide" data-y="-1000" data-x="3000" data-rotate="-360">
+            <h1>parseInt</h1>
+            <h2>It takes an extra argument you know...</h2>
+            <ul>
+                <li>That extra argument is the radix.</li>
+                <li>If you don't specify it, it does fun things. <span class="delay-fade-in">Like parse base 8 randomly.</span></li>
+            </ul>
+        </div>
+
+        <div id="plus" class="step slide" data-y="-1000" data-x="4500">
+            <h1>+ operator</h1>
+            <h2>Adding or concatenation, depending on the arguments</h2>
+            <p>If the arguments are different, it does some coercion. <span class="delay-fade-in">Because that's probably what you want.</span></p>
+        </div>
+
+        <div id="nan" class="step slide" data-y="500" data-x="4500">
+            <h1>typeof NaN === "number"</h1>
+            <p class="delay-fade-in">Think about that.</p>
+        </div>
+
+        <div id="array" class="step slide" data-y="2000" data-x="4500">
+            <h1>typeof [] === "object"</h1>
+            <p>Javascript arrays are just weird objects.</p>
+            <p class="delay-fade-in">for-in loops don't really work.</p>
+        </div>
+
+        <div id="equals" class="step slide" data-y="3500" data-x="4500">
+            <h1>== and ===</h1>
+            <p>Do you want bizarre coercion or an actual equals operator that works as you expect it to?</p>
+        </div>
+
+        <div id="with" class="step slide" data-y="3500" data-x="3000">
+            <h1>with</h1>
+            <h2>You're being trolled by the property lookup chain.</h2>
+            <p>Make code less readable and slower.</p>
+            <p class="delay-fade-in">Why is it a good thing again?</p>
+        </div>
+
+        <div id="eval" class="step slide" data-y="3500" data-x="1500">
+            <h1>eval</h1>
+            <h2>Can you spell <i>slow security hole</i>?</h2>
+            <p class="delay-fade-in">Minimizers hate eval too.</p>
+        </div>
+
+        <div id="set" class="step slide" data-y="3500">
+            <h1>setTimeout/setInterval</h1>
+            <h2>They can take strings, which is just as bad as eval.</h2>
+        </div>
+
+        <div id="fallthrough" class="step slide" data-y="3500" data-x="-1500">
+            <h1>case fallthrough</h1>
+            <h2>Fallthrough is default, have to use break</h2>
+            <p class="delay-fade-in">Ruby does it right (no fallthrough or break at all), so does Go (explicit fallthrough)</p>
+        </div>
+
+        <div id="if-while" class="step slide" data-y="3500" data-x="-3000">
+            <h1>if/whilte/etc don't require braces</h1>
+            <p>Go finally does this right.</p>
+        </div>
+
+        <div id="bitwise" class="step slide" data-y="2000">
+            <h1>bitwise operators</h1>
+            <p>Convert internally to int, do the operation, then back to float.</p>
+            <p class="delay-fade-in">wat.</p>
+        </div>
+
+        <div id="thanks" class="step slide" data-y="5000">
+            <h1>Thanks everybody</h1>
+            <p><a href="http://darkhelmet.github.com/javascript-the-bad-parts/">View Online</a></p>
+        </div>
+
+        <div id="overview" class="step" data-scale="12"></div>
+    </div>
+
+    <script type="text/javascript" src="/impress.js"></script>
+    <script type="text/javascript">
+        impress().init();
+        if (document.location.href === 'localhost') {
+            less.watch();
+        }
+    </script>
 </body>
 </html>
